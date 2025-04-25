@@ -1,14 +1,23 @@
-# Use the official Nginx image
-FROM nginx:alpine
+# Base image
+FROM node:18-alpine
 
-# Remove default nginx website
-RUN rm -rf /usr/share/nginx/html/*
+# Set working directory
+WORKDIR /app
 
-# Copy your files into the nginx public folder
-COPY . /usr/share/nginx/html
+# i am creating a dirctory
+RUN mkdir /app
 
-# Expose port 80
-EXPOSE 80
+# Copy dependency files first
+COPY package*.json ./
 
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Install dependencies
+RUN npm install
+
+# Copy the rest of your app
+COPY . .
+
+# Expose port for Vite frontend (default 5173) or backend (custom)
+EXPOSE 3000
+
+# Default to Vite dev (you can switch to backend start if you have one)
+CMD ["npm", "run", "dev"]

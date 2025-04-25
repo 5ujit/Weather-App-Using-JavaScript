@@ -4,9 +4,6 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
-# i am creating a dirctory
-RUN mkdir /app
-
 # Copy dependency files first
 COPY package*.json ./
 

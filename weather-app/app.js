@@ -32,7 +32,7 @@ const getWeather = async (city) => {
 const showWeather = (data) => {
     weather.innerHTML = `
         <div>
-            // <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
         </div>
         <div>
             <h2>${data.main.temp} ℃</h2>
